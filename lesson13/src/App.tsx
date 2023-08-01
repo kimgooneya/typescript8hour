@@ -1,18 +1,18 @@
-import { useState, useEffect, useCallback, useMemo, MouseEvent, KeyboardEvent, useRef } from "react"
+import { useState, useEffect, useCallback, useMemo, useRef, MouseEvent, KeyboardEvent } from 'react' 
 
 interface User {
   id: number,
   username: string,
 }
 
-type fibFunc = (n: number) => number
+type fibFunc = (n: number) => number 
 
 const fib: fibFunc = (n) => {
-  if(n < 2) return n
-  return fib(n - 1) + fib(n - 2);
+  if (n < 2) return n 
+  return fib(n - 1) + fib(n - 2) 
 }
 
-const myNum: number = 37
+const myNum: number = 37 
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -20,7 +20,7 @@ function App() {
 
   const inputRef = useRef<HTMLInputElement>(null)
 
-  console.log(inputRef?.current)
+  console.log(inputRef?.current) 
   console.log(inputRef?.current?.value)
 
   useEffect(() => {
@@ -30,9 +30,9 @@ function App() {
     return () => console.log('unmounting')
   }, [users])
 
-  const addTwo = useCallback((e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>): void => setCount(prev => prev + 1), [])
+  const addTwo = useCallback((e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>): void  => setCount(prev => prev + 2),[])
 
-  const result = useMemo<number>(() => fib(myNum), [myNum])
+  const result = useMemo<number>(() => fib(myNum),[myNum])
 
   return (
     <div className="App">
